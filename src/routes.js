@@ -8,6 +8,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('app', {
       url: '/',
-      template: '<app></app>'
+      template: '<deck-list></deck-list>'
+    })
+    .state('deck', {
+      url: '/deck/:id',
+      template: `WIP`
     });
 }
