@@ -21,4 +21,12 @@ describe('Deck service', () => {
   it('should define delete', angular.mock.inject(deckService => {
     expect(typeof deckService.delete().then).toBe('function');
   }));
+
+  it('should define getall', angular.mock.inject(deckService => {
+    expect(typeof deckService.getAll().then).toBe('function');
+  }));
+
+  it('should define save', angular.mock.inject(deckService => {
+    expect(typeof deckService.save({id: 1}).then).toBe('function');
+  }));
 });

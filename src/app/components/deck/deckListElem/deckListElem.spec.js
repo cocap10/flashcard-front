@@ -21,9 +21,12 @@ describe('DeckListElem component', () => {
     expect(component.index).toEqual(1);
   });
 
-  it('should call service to delete deck', angular.mock.inject(deckService => {
+  it('should call service to delete deck', angular.mock.inject((deckService, $timeout) => {
+    component.deleteElem = () => {};
+    spyOn(component, 'deleteElem').and.callThrough();
     spyOn(deckService, 'delete').and.callThrough();
     component.delete(1);
+    $timeout.flush();
     expect(deckService.delete).toHaveBeenCalled();
   }));
 });

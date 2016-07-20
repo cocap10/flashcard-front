@@ -33,9 +33,12 @@ describe('DeckEdit component', () => {
     component.submit();
     expect(deckService.save).toHaveBeenCalled();
   }));
-  it('should trigger submitted flag', angular.mock.inject(() => {
+  it('should trigger submitted flag', angular.mock.inject($timeout => {
     component.submit();
     expect(component.submitted).toBeDefined();
+    expect(component.submitted).toBe(true);
+    $timeout.flush();
+    expect(component.submitted).toBe(false);
   }));
   it('should be true if deck has changed', angular.mock.inject(() => {
     expect(component.isDeckUntouched()).toBe(true);

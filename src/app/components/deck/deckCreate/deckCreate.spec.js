@@ -18,7 +18,7 @@ describe('DeckCreate component', () => {
     angular.mock.module('deckCreate');
   });
 
-  it('should create a deck', angular.mock.inject(($componentController, $rootScope, deckService) => {
+  it('should create a deck', angular.mock.inject(($componentController, $rootScope, deckService, $timeout) => {
     const component = $componentController('deckCreate', null, {});
     spyOn(deckService, 'create').and.callThrough();
     $rootScope.$digest();
@@ -28,5 +28,6 @@ describe('DeckCreate component', () => {
     component.submit();
     expect(component.submitted).toBe(true);
     expect(deckService.create).toHaveBeenCalled();
+    $timeout.flush();
   }));
 });
