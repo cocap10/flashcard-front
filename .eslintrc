@@ -1,0 +1,13 @@
+{
+  "globals": {
+    "expect": true
+  },
+  "root": true,
+  "env": {
+    "browser": true,
+    "jasmine": true
+  },
+  "extends": [
+    "xo-space/esnext"
+  ]
+}
