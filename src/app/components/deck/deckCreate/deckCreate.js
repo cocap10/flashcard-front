@@ -12,9 +12,12 @@ class DeckCreateController {
       this.toastr.success('Deck Created', null, {
         timeOut: 500,
         progressBar: true,
-        onHidden: () => this.$state.go('app')
+        onHidden: this.goToMainPage()
       });
     });
+  }
+  goToMainPage() {
+    this.$state.go('app');
   }
 }
 
