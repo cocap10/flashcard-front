@@ -12,6 +12,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('deck', {
       url: '/deck/:id',
-      template: `WIP`
+      template: `<deck-edit></deck-edit>`
+    })
+    .state('deckCreate', {
+      url: '/deckCreate',
+      template: '<deck-create></deck-create>'
     });
 }
