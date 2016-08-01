@@ -1,4 +1,5 @@
 class DeckListElemController {
+  /** @ngInject */
   constructor(deckService) {
     this.deckService = deckService;
   }
@@ -15,9 +16,9 @@ export const deckListElem = {
         <div class="col-md-3">#{{$ctrl.index}}</div>
         <a ui-sref="deck({id:$ctrl.deck.id})" class="col-md-4">{{$ctrl.deck.name}}</a>
         <ng-pluralize class="col-md-4" count="$ctrl.deck.cards.length"
-                     when="{'0': 'Aucune bonne réponse',
-                         '1': 'Une bonne réponse',
-                         'other': '{} bonnes réponses'}">
+                     when="{'0': 'No card inside',
+                         '1': 'One card',
+                         'other': '{} cards'}">
         </ng-pluralize>
         <a class="text-info" ui-sref="deck({id:$ctrl.deck.id})">Edit</a>      
         <a class="text-danger" ng-click="$ctrl.delete($ctrl.deck.id)">Delete</a>      

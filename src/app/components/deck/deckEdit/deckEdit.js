@@ -42,6 +42,7 @@ export const deckEdit = {
           <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
           <span id="deckNameStatus" class="sr-only">(success)</span>
         </div>
+        <card-list cards="$ctrl.deck.cards" deck-id="$ctrl.deck.id"></card-list>
         <button type="submit" ng-disabled="updateDeck.$error.required || $ctrl.submitted || $ctrl.isDeckUntouched()" 
                 class="btn" ng-click="$ctrl.submit()">
                 Update

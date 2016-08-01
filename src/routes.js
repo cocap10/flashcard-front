@@ -17,5 +17,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('deckCreate', {
       url: '/deckCreate',
       template: '<deck-create></deck-create>'
+    })
+    .state('cardCreate', {
+      url: '/cardCreate/:deckId',
+      template: '<card-create></card-create>'
+    })
+    .state('card', {
+      url: '/card/:deckId/:cardId',
+      template: '<card-edit></card-edit>'
     });
 }
