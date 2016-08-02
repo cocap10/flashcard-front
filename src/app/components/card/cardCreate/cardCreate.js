@@ -37,18 +37,22 @@ class CardCreateController {
 export const cardCreate = {
   template: `
       <h1>Create Card</h1> 
-      <form name="createCard">
+      <form name="createCard" ng-class=" {'has-success':!createCard.cardQuestion.$error.required,
+                                          'has-error':createCard.cardQuestion.$error.required,
+                                          'has-feedback':!createCard.cardQuestion.$error.required}">
       <div class="form-group">
           <label class="control-label" for="cardQuestion">Question: </label>
-          <input class="form-control" id="cardQuestion" name="cardQuestion" ng-model="$ctrl.card.question" required>
+          <input type="text" class="form-control" id="cardQuestion" name="cardQuestion" ng-model="$ctrl.card.question" required>
+          <span ng-show="createCard.cardQuestion.$error.required" class="help-block">Question is required *</span>
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
           <label class="control-label" for="cardAnswers">Answers: </label>
           <answer-list class="form-control" id="cardAnswers" card="$ctrl.card">//TODO : ListAnswer</answer-list> 
           <label class="control-label" for="cardDeck">Deck: </label>
-          <select class="form-control" id="cardDeck" ng-model="$ctrl.deckId"> 
+          <select class="form-control" id="cardDeck" ng-model="$ctrl.deckId" required> 
             <option ng-repeat="deck in $ctrl.decks" value="{{deck.id}}" ng-selected="$ctrl.deckId == deck.id">{{deck.name}}</option>
           </select>
       </div>
-          <button type="submit" class="btn" ng-click="$ctrl.submit()">
+          <button type="submit" ng-disabled="createCard.$error.required || $ctrl.submitted" class="btn" ng-click="$ctrl.submit()">
             Submit
           </button>
           <button type="button" class="btn" ui-sref="deck({id : $ctrl.deckId })">Cancel</button>
